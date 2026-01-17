@@ -19,3 +19,7 @@ client/*.local
 *.njsproj
 *.sln
 *.sw?
+mongo
+mongo/
+mongo/*
+mongo/data
