@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 connectDB();
 
 // Routes
-app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 
 // Errors Handlers
 app.use(notFound);
