@@ -10,7 +10,8 @@ services:
     volumes:
       - /app/node_modules
       - ./api:/app
-
+    depends_on:
+      - mongo
   client:
     build:
       context: ./client
@@ -24,6 +25,14 @@ services:
     environment:
       - WDS_SOCKET_PORT=0
 
+  
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/data:/data/db
+
   nginx:
     build:
       context: ./nginx
@@ -34,3 +43,6 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
+
+volumes:
+    data:
