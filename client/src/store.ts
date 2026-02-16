@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit"
-import counterReducer from "./slices/counter/counterSlice"
-import authReducer from "./slices/auth/authReducer"
+import cveReducer from "./slices/cve/cveReducer"
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    auth: authReducer,
+    cve: cveReducer,
   },
 })
 

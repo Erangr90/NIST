@@ -12,6 +12,8 @@ services:
       - ./api:/app
     depends_on:
       - mongo
+    ports:
+      - 8080:5000
   client:
     build:
       context: ./client
@@ -25,7 +27,6 @@ services:
     environment:
       - WDS_SOCKET_PORT=0
 
-  
   mongo:
     image: mongo
     ports:
