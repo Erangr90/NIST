@@ -38,8 +38,19 @@ function Home() {
       {cves.map((cve) => (
         <CveCard key={cve.cveId} cve={cve} />
       ))}
-      {page > 1 && <button onClick={() => setPage(page - 1)}>Previous</button>}
-      {page < 10 && <button onClick={() => setPage(page + 1)}>Next</button>}
+
+      <div className="home-pagination">
+        {page > 1 && (
+          <button className="btn" onClick={() => setPage(page - 1)}>
+            Previous
+          </button>
+        )}
+        {page < 10 && (
+          <button className="btn" onClick={() => setPage(page + 1)}>
+            Next
+          </button>
+        )}
+      </div>
     </div>
   )
 }
