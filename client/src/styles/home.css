@@ -7,6 +7,14 @@
   max-width: 100%;
 }
 
+.home-showcase {
+  margin-bottom: 24px;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 1600px) {
   .home-div {
     grid-template-columns: repeat(4, 1fr);

@@ -1,6 +1,7 @@
 // card for displaying the top 5 important cve's information
 import type { CVE } from "../types/cve"
 import "../styles/cveCard.css"
+import { useNavigate } from "react-router-dom"
 
 function CveCard({ cve }: { cve: CVE }) {
   const { cveId, published, lastModified, descriptions, metrics } = cve
@@ -10,6 +11,8 @@ function CveCard({ cve }: { cve: CVE }) {
     metrics.cvssMetricV30?.[0] ||
     metrics.cvssMetricV2?.[0]
   const baseScore = metric?.cvssData?.baseScore || null
+
+  const navigate = useNavigate()
 
   // Format dates
   const formatDate = (date: Date) => {
@@ -27,7 +30,7 @@ function CveCard({ cve }: { cve: CVE }) {
     "No description available"
 
   return (
-    <div className="cve-card">
+    <div className="cve-card" onClick={() => navigate(`/cve/${cveId}`)}>
       <div className="cve-card-header">
         <h2 className="cve-card-id">{cveId}</h2>
         {baseScore !== null && (

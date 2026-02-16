@@ -21,3 +21,20 @@ export const getCves = createAsyncThunk<
     return rejectWithValue({ message: "Error in get CVES action" })
   }
 })
+
+export const getCVEById = createAsyncThunk<
+  CVE,
+  { cveId: string },
+  { rejectValue: ServerError }
+>("cve/getCVEById", async ({ cveId }, { rejectWithValue }) => {
+  try {
+    const { data } = await axiosClient.get(`/cve/cveById/${cveId}`)
+    return data
+  } catch (err) {
+    const error = err as AxiosError<ServerError>
+    if (error.response && error.response.data) {
+      return rejectWithValue(error.response.data)
+    }
+    return rejectWithValue({ message: "Error in get CVE by ID action" })
+  }
+})

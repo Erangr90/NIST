@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { ServerError } from "../../types/errors"
-import { getCves } from "./cveActions"
+import { getCves, getCVEById } from "./cveActions"
 
 export interface CveState {
   loading: boolean
@@ -27,6 +27,19 @@ export const cveSlice = createSlice({
       state.loading = false
     })
     builder.addCase(getCves.pending, (state) => {
+      state.loading = true
+      state.error = undefined
+    })
+    // --- Get CVE by ID ---
+    builder.addCase(getCVEById.fulfilled, (state) => {
+      state.error = undefined
+      state.loading = false
+    })
+    builder.addCase(getCVEById.rejected, (state, action) => {
+      state.error = action.payload || { message: "Get CVE by ID failed" }
+      state.loading = false
+    })
+    builder.addCase(getCVEById.pending, (state) => {
       state.loading = true
       state.error = undefined
     })
