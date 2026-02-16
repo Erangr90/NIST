@@ -15,6 +15,7 @@ A full-stack application for browsing **NIST CVE** (Common Vulnerabilities and E
 - For the API, create `api/.env` with at least:
   - `MONGO_URI` — e.g. `mongodb://mongo:27017` when using Docker
   - `DB_NAME` — database name (e.g. `nist` or `cve`)
+  - `NODE_ENV` - development or production
 
 ## Run with Docker Compose
 
